@@ -12,6 +12,10 @@ import scala.concurrent.{ExecutionContext, Future}
 class PeopleController @Inject()(personRepository: PersonRepository, cc: ControllerComponents)(implicit ec: ExecutionContext) extends AbstractController(cc) {
   implicit val personFormat: Format[Person] = Json.format[Person]
 
+
+
+
+
   def getPeople = Action.async {
     personRepository.list().map { people =>
       Ok(Json.toJson(people))
